@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 import Login from "./pages/Login/login";
 import User from "./pages/users/User";
 import UserDitels from "./pages/users/UserDitels";
@@ -13,7 +13,6 @@ function App() {
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 //قمت بتخزين اوبجكت في localStorage ببيانات المستخدم الي قمت بالتسجيل بالايميل الخاص في 
   const authuser = JSON.parse(localStorage.getItem("authUser"));
-  const navgiet = useNavigate();
   // ما عملت كمبونت خاص ب context استخدمتو هان وغيرت قيمة الState حسب الحالة وين بدي يكون موجود وين لا 
   const login = () => {
     setIsAuthenticated(true);
@@ -36,21 +35,13 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
     { path: "*", element: <NoMatch /> },
   ]);
   return (
+    
     <>
-
       <AuthContext.Provider
       // تمرير القيم لاستخدامهم في الكمبونت
         value={{ isAuthenticated, setIsAuthenticated, login, logout, authuser }}
       >
         {router}
-        <button
-          onClick={() => {
-            logout();// من CONTEXT لتغير قيمة الحالة اذا TRUE او FALSE 
-            navgiet("/login");//انتقال 
-          }}
-        >
-          logout
-        </button>
       </AuthContext.Provider>
     </>
   );

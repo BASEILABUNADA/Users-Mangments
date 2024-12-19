@@ -1,11 +1,25 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import './style.css'
+import { useContext } from "react";
+import { AuthContext } from "../../App";
+
 const SiedPar = () => {
+  const {logout} = useContext(AuthContext);
+  const navgiet = useNavigate()
 
   return (
-    <div >
-          <NavLink style={{margin:20}} to="/users">User List</NavLink>
-          <NavLink style={{margin:20}} to="/users/profile" >profile</NavLink>
-    </div>
+    <nav>
+          <NavLink style={{}}  to="/users">User List</NavLink>
+          <NavLink  to="/users/profile" >profile</NavLink>
+          <button
+          onClick={() => {
+            logout();// من CONTEXT لتغير قيمة الحالة اذا TRUE او FALSE 
+            navgiet("/login");//انتقال 
+          }}
+        >
+          logout
+        </button>
+    </nav>
   );
 };
 

@@ -4,27 +4,20 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../App";
 const User = () => {
-  
   const { authuser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
-  const [lood , setlood] = useState(true)
 // قمنا بجلب البيانات من باستخدام اكسيوس وعرضها في صفحة اليوزرز 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setUsers(res.data))
-      .then((res)=>setlood(false))
       .catch((error) => console.error("Error fetching users:", error));
-setlood(false)
   }, []);
-  
-
   return (
     <div>
-    
       <h1>Welcome : {authuser.name} </h1>
       <h2>Users List </h2>
-      <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
+      <table border="1" style={{ width: "98%", borderCollapse: "collapse", marginLeft:10 , }}>
         <thead>
           <tr>
             <th>ID</th>
@@ -61,5 +54,4 @@ setlood(false)
     
   )
 }
-
 export default User;

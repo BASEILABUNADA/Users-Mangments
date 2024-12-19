@@ -8,6 +8,7 @@ const UserDetail = () => {
 
   useEffect(() => {
     const getById = async (id) => {
+      // 
       try {
         const res = await axios.get(
           `https://jsonplaceholder.typicode.com/users/${id}`
@@ -34,12 +35,3 @@ const UserDetail = () => {
   );
 };
 export default UserDetail;
-// useEffect(() => {
-//   getbyid(id)
-// }, [id]);
-// const getbyid=(id)=>
-// axios . get (`https://jsonplaceholder.typicode.com/users/${id}`)
-// .then((res) => res.json())
-// .then((data) => setUser(data))
-// .catch((err) => console.error("Error fetching user:", err))
-// if (!user) return <div>Loading...</div>;
